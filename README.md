@@ -1,6 +1,6 @@
-# Twitter Summary Bot 🤖🐦
+# Twitter Digest Bot 🤖🐦
 
-Twitter Summary Bot is a Python script that generates an executive summary of specified users' Twitter activity for the past few days or their most recent tweets. It uses OpenAI's GPT-3.5-turbo to produce the summaries and emails the results to the specified email address.
+Twitter Digest Bot is a Python script that generates an executive summary of specified users' Twitter activity for the past few days or their most recent tweets. It uses OpenAI's GPT-3.5-turbo to produce the summaries and emails the results to the specified email address.
 
 ## Features 🚀
 
@@ -14,7 +14,7 @@ Twitter Summary Bot is a Python script that generates an executive summary of sp
 1. Clone this repository:
 
 ```bash
-git clone https://github.com/your_username/twitter-summary-bot.git
+git clone https://github.com/fvlo/twitter-digest-bot.git
 ```
 2. Install the required packages:
 
