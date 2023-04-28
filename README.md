@@ -50,7 +50,7 @@ SENDER_GMAIL_APP_PASSWORD = your_gmail_app_password
 ```
 users = user1 user2 user3
 days = 2
-max_tweets = 10
+max_tweets = 10 #set to -1 to ignore this parameter
 to_email = recipient@example.com
 ```
 
