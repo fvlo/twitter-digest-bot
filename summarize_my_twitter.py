@@ -2,6 +2,7 @@ from get_user_activity import return_user_activity
 from send_email import send_email
 import openai
 import math
+from pathlib import Path
 
 def read_secrets(file_path):
     secrets = {}
@@ -65,6 +66,19 @@ def get_summary(users, days, max_tweets=-1):
     # Get user activity
     user_activies = []
     
+    
+    # Get the absolute path of the current script's directory
+    script_directory = Path(__file__).resolve().parent
+    
+    print('\n')
+    print('Welcome to the Twitter Digest Bot!')
+    print(f'The current working directory is {script_directory}')
+    print(f'The configuration file is {script_directory}/config.txt')
+    print('\n')
+    
+    print(f"Retrieving tweets for the following users: {*users,}")
+    print("Please wait...")
+    print('\n')
     for user in users:
         try:
             user_activity, word_count = return_user_activity(user, days, max_tweets)
@@ -86,14 +100,15 @@ def get_summary(users, days, max_tweets=-1):
     cost_estimate = word_count * price_per_word
     
     # Ask for confirmation as user input
-    input_confirmation = input(f"This summary request is expected to cost: {cost_estimate:.4f} dollars for {len(user_activies)} user summaries. Press 'y' to continue or 'n' to cancel.")
+    input_confirmation = input(f"This summary request is expected to cost: {cost_estimate:.4f} dollars (i.e. {cost_estimate*100:.1f} dollar cents) for {len(user_activies)} user summaries. Answer 'y' to continue or with any other key to cancel.")
+    print('\n')
     if input_confirmation != 'y':
-        return
+        print("Summary request cancelled.")
+        quit()
+        
     
     cost_actual = 0
     summary = '<html>\n'
-
-    print(f"Estimated cost: {cost_estimate:.4f} dollars (i.e. {cost_estimate*100:.1f} dollar cents)")
 
     
     for data_to_summarize in user_activies:
@@ -156,6 +171,7 @@ def get_summary(users, days, max_tweets=-1):
     
     summary = summary_intro + summary
     
+    print('\n')
     print(f"Summary complete. Actual cost was {cost_actual:.4f} dollars (i.e. {cost_actual*100:.1f} dollar cents)")
 
     return summary
