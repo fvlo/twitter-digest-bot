@@ -188,7 +188,7 @@ def summarize_my_twitter():
 
     summary = get_summary(users, days, max_tweets)
 
-    subject = "Your summary from Twitter Summary Bot"
+    subject = "Your summary from TwitterDigestBot"
     body_html = summary
 
 

@@ -102,12 +102,3 @@ def print_user_activity(username, timewindowdays=1, max_tweets=-1):
 def return_user_activity(username, timewindowdays=1, max_tweets=-1):
     tweets, word_count = get_tweets_for_past_n_days(username, timewindowdays, max_tweets)
     return tweets, word_count
-
-
-'''def main():
-    username = input("Enter a Twitter username: ")
-    timewindowdays = int(input("Enter the number of days to look back: "))
-    print_conversation(get_tweets_for_past_n_days(username, timewindowdays))
-
-if __name__ == "__main__":
-    main()'''
